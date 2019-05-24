@@ -12,8 +12,8 @@ public class JetsApplication {
 	
 	public static void main(String[] args) {
 		List<Jet> jetFullList= new ArrayList<> ();
-		List<Airfield> cargoPlanes = new ArrayList<>();
-		List<Airfield> fighterJets = new ArrayList<>();
+		List<Jet> cargoPlanes = new ArrayList<>();
+		List<Jet> fighterJets = new ArrayList<>();
 		 String fileName = "Jets.txt";
 		JetsApplication jet = new JetsApplication();
 		jet.run(fileName, jetFullList); 	}
@@ -31,8 +31,9 @@ public class JetsApplication {
 				double speed = Double.parseDouble(jets[2]);
 				int range = Integer.parseInt(jets[3]);
 				long price = Long.parseLong(jets[4]);
-					FighterJet fj = new FighterJet(type, model, speed, range, price);
-					listFromFile.add(fj);	}
+				Jet jet = new JetImpl(type, model, speed, range, price);
+				listFromFile.add(jet);
+				}
 		} 	catch (Exception e) {
 			e.printStackTrace(); }
 		return listFromFile;  	}
