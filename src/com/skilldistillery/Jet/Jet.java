@@ -1,19 +1,38 @@
 package com.skilldistillery.Jet;
 
 public abstract class Jet {
-	private String model;
 	private String type;
+	private String model;
 	private double speed;
 	private int range;
 	private long price;
 
-	public Jet(String model,String type, double speed, int range, long price) {
-		this.model = model;
+	public Jet(String type, String model, double speed, int range, long price) {
 		this.type = type;
+		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
+
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Jet [type=");
+		builder.append(type);
+		builder.append(", model=");
+		builder.append(model);
+		builder.append(", speed=");
+		builder.append(speed);
+		builder.append(", range=");
+		builder.append(range);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append("]");
+		return builder.toString();
+	}
+
 
 	public String getType() {
 		return type;
@@ -21,17 +40,6 @@ public abstract class Jet {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public  void fly() {
-		
-	}
-
-	public  double getSpeedInMach(double speed) {
-		double speedInMach = 0.0;
-		int speedOfSound = 767;
-		speedInMach = speed / speedOfSound;
-		return speedInMach;
 	}
 
 	public String getModel() {
@@ -65,7 +73,14 @@ public abstract class Jet {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
-	
-	
+
+	public void fly() {
+	}
+
+	public double getSpeedInMach(double speed) {
+		double speedInMach = 0.0;
+		int speedOfSound = 767;
+		speedInMach = speed / speedOfSound;
+		return speedInMach;
+	}
 }

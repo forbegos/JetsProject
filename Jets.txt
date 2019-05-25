@@ -1,0 +1,21 @@
+fighter,Boeing F-15SE Silent Eagle,1650,2400,105000000
+fighter,Sukhoi Su-57,1535,2175,50000000
+fighter,Shenyang J-15 Flying Shark,1827,2175,61000000
+fighter,Lockheed Martin F-35B Lightning II,1200,1750,89200000
+fighter,HESA Saeqeh,1700,3000,20000000
+fighter,Chengdu FC-1 Xiaolong,1960,2163,25000000
+fighter,KAI T-50 Golden Eagle,1020,1851,30000000
+fighter,HAL Tejas,1381,528,23000000
+fighter,McDonnell Douglas F/A-18E/F Super Hornet,1190,1466,70500000
+cargo,Airbus A330 MRTT,547,9200,300000000
+cargo,Airbus A400M Atlas,485,2051,170000000
+cargo,Alenia C-27J Spartan,374,1093,32000000
+cargo,Antonov An-178,497,2485,40000000
+cargo,Antonov An-124 Ruslan,537,3231,70000000
+cargo,Boeing C-17 Globemaster III,515,2785,218000000
+cargo,Embraer KC-390,541,1749,50000000
+cargo,Ilyushin ll-76-MD-90A,560,3125,50000000
+cargo,Kawasaki C-2,570,4750,136000000
+cargo,Lockheed C-5 Galaxy,531,5728,262750000
+cargo,Lockheed C-141 Starlifter,567,6140,42300000
+cargo,Xian Y-20,468,2812,160000000
