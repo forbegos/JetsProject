@@ -15,6 +15,7 @@ public abstract class Jet {
 		this.price = price;
 	}
 
+	public Jet() {}
 	
 	@Override
 	public String toString() {
