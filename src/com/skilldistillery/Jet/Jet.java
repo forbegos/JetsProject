@@ -20,17 +20,14 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet [type=");
-		builder.append(type);
-		builder.append(", model=");
-		builder.append(model);
-		builder.append(", speed=");
-		builder.append(speed);
-		builder.append(", range=");
-		builder.append(range);
-		builder.append(", price=");
-		builder.append(price);
-		builder.append("]");
+		builder.append("Jet model: ");
+		builder.append(model + "\n");
+		builder.append("Speed: ");
+		builder.append(speed + " MPH\n");
+		builder.append("Range: ");
+		builder.append(range + " Miles\n");
+		builder.append("Price: USD ");
+		builder.append(price + "\n");
 		return builder.toString();
 	}
 
@@ -76,7 +73,19 @@ public abstract class Jet {
 	}
 
 	public void fly() {
-	}
+		AirField fleet = new AirField();
+		System.out.println("All jets are now flying!...: \n");
+		for (Jet jet : fleet.getJets()) {
+			System.out.println("Model: " + jet.getModel());
+			System.out.println("Speed : " + jet.getSpeed() + " MPH");
+			System.out.println("Range: " + jet.getRange() + " Miles");
+			System.out.println("Price: USD " + jet.getPrice());
+			System.out.println();
+			System.out.println("Flight time: " + jet.getRange() / jet.getSpeed() + " hours.");
+			System.out.println();
+		}
+	}		
+	
 
 	public double getSpeedInMach(double speed) {
 		double speedInMach = 0.0;
