@@ -27,7 +27,7 @@ public class JetsApplication {
 		do {
 			System.out.println("PLEASE SELECT FROM THE FOLLOWING OPTIONS:                               \n");
 			System.out.println("(1) List Fleet");
-			System.out.println("(2)  Fly all jets");
+			System.out.println("(2) Fly all jets");
 			System.out.println("(3) View fastest jet");
 			System.out.println("(4) View jet with longest range");
 			System.out.println("(5) Load all Cargo Jets");
@@ -39,35 +39,61 @@ public class JetsApplication {
 			String option = kb.next();
 			switch (option) {
 			case "1":
+				clearScreen();
 				listFleet();
+				prompt(kb);
+				clearScreen();
 				break;
 			case "2":
+				clearScreen();
 				flyAllJets();
+				prompt(kb);
+				clearScreen();
 				break;
 			case "3":
+				clearScreen();
 				listFastestJet();
+				prompt(kb);
+				clearScreen();
 				break;
 			case "4":
+				clearScreen();
 				listLongestRange();
+				prompt(kb);
+				clearScreen();
 				break;
 			case "5":
+				clearScreen();
 				loadCargo();
+				prompt(kb);
+				clearScreen();
 				break;
 			case "6":
+				clearScreen();
 				dogFight();
+				prompt(kb);
+				clearScreen();
 				break;
 			case "7":
+				clearScreen();
 				addJet(kb);
+				prompt(kb);
+				clearScreen();
 				break;
 			case "8":
-				// removeJet();
+				clearScreen();
+				removeJet(kb);
+				prompt(kb);
+				clearScreen();
 				break;
 			case "9":
-				System.out.println("Quitting now.... \n Goodbye!!");
+				clearScreen();
+				System.out.println("\n\nQuitting now.... \n Goodbye!!");
 				badSelect = true;
 				break;
 			default:
 				System.out.println("Wrong option selected, please try again.");
+				clearScreen();
 				break;
 			}
 		} while (!badSelect);
@@ -87,6 +113,17 @@ public class JetsApplication {
 		fleet.fastestJet();
 	}
 
+	public void clearScreen() {
+		System.out.println(new String(new char[80]).replace("\0", "\r\n"));
+	}
+
+	public void prompt(Scanner kb) {
+		kb.nextLine();
+		System.out.print("Press any enter to continue.");
+		kb.nextLine();
+
+	}
+
 	public void listLongestRange() {
 		fleet.longestRange();
 	}
@@ -99,8 +136,12 @@ public class JetsApplication {
 	public void dogFight() {
 		jets.fight();
 	}
-	
+
 	public void addJet(Scanner kb) {
 		fleet.addJet(kb);
+	}
+
+	public void removeJet(Scanner kb) {
+		fleet.removeJet(kb);
 	}
 }

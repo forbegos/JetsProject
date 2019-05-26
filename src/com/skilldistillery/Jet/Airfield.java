@@ -1,7 +1,9 @@
 package com.skilldistillery.Jet;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -27,7 +29,9 @@ public class AirField {
 				Jet newJet = new JetImpl(type, model, speed, range, price);
 				jets.add(newJet);
 			}
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return jets;
@@ -78,40 +82,84 @@ public class AirField {
 
 	public void addJet(Scanner kb) {
 		Jet newJet = new JetImpl();
-		boolean endInput = false;
+		String input;
 		System.out.println("Please add the following characteristics of the Jet you wish to add: \n");
-		do {
+		boolean validInput = false;
+		while (!validInput) {
 			System.out.print("Please select the type (1 = Fighter Jet), (2 = Cargo Jet) > ");
-			String input = kb.next();
-			switch (input) {
-			case "1":
+			input = kb.next();
+			if (input.equals("1")) {
 				System.out.println("Fighter Jet selected.\n");
 				newJet.setType("fighter");
-				endInput = true;
-				break;
-			case "2":
-				System.out.println("Cargo Jet selected.\n");
-				newJet.setType("cargo");
-				endInput = true;
-				break;
-			default:
-				System.out.println("Please select the correct type!");
+				validInput = true;
 				break;
 			}
-		} while (!endInput);
-		try {
-			System.out.print("Please enter model: ");
-			newJet.setModel(kb.next());
-			System.out.print("Please enter range in miles: ");
-			newJet.setRange(kb.nextInt());
-			System.out.print("Please enter speed in miles per hour: ");
-			newJet.setSpeed(kb.nextDouble());
-			System.out.print("Please enter price in USD: ");
-			newJet.setPrice(kb.nextLong());
-		} catch (Exception e) {
+			if (input.equals("2")) {
+				System.out.println("Cargo Jet selected.\n");
+				newJet.setType("cargo");
+				validInput = true;
+				break;
+			} else {
+				System.out.println("Please enter a valid input.");
+			}
 		}
 
+		System.out.print("Please enter model: ");
+		newJet.setModel(kb.next());
+
+		validInput = false;
+		int i;
+		while (!validInput) {
+			System.out.print("Please enter range in miles: ");
+			try {
+				i = kb.nextInt();
+				newJet.setRange(i);
+				validInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter correct input in miles");
+				kb.nextLine();
+			}
+		}
+
+		validInput = false;
+		double d;
+		while (!validInput) {
+			System.out.print("Please enter speed in miles per hour: ");
+			try {
+				d = kb.nextDouble();
+				newJet.setSpeed(d);
+				validInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter correct input in miles per hour");
+				kb.nextLine();
+			}
+		}
+
+		validInput = false;
+		long l;
+		while (!validInput) {
+			System.out.print("Please enter price in USD: ");
+			try {
+				l = kb.nextLong();
+				newJet.setPrice(l);
+				validInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Please enter correct input in USD");
+				kb.nextLine();
+			}
+		}
 		jets.add(newJet);
 		System.out.println("\n Your Jet has been added to the fleet!");
+	}
+
+	public void removeJet(Scanner kb) {
+		System.out.print("Please enter the number of the Jet you wish to remove from the list >");
+		String input = kb.next();
+		if (Integer.parseInt(input) > jets.size()) {
+			System.out.println("No such Jet, please try again");
+		} else {
+			System.out.println("The following Jet has been removed from the fleet: ");
+			System.out.println(jets.remove(Integer.parseInt(input) - 1));
+		}
 	}
 }

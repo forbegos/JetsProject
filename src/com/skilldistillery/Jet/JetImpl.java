@@ -6,9 +6,5 @@ public class JetImpl extends Jet {
 		super(type, model, speed, range, price);
 	}
 
-	public JetImpl() {
-	}
-
-	
-	
+	public JetImpl() {	}
 }
