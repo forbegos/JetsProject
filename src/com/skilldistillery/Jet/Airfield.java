@@ -3,7 +3,9 @@ package com.skilldistillery.Jet;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class AirField {
 	private List<Jet> jets;
@@ -55,12 +57,12 @@ public class AirField {
 				fastest = new JetImpl(jet.getType(), jet.getModel(), jet.getSpeed(), jet.getRange(), jet.getPrice());
 			}
 		}
-		
+
 		System.out.println("The fastest jet in the fleet is:\n ");
 		System.out.println(fastest.toString());
 
 	}
-	
+
 	public void longestRange() {
 		Jet longest = new JetImpl();
 		int range = 0;
@@ -74,4 +76,42 @@ public class AirField {
 		System.out.println(longest.toString());
 	}
 
+	public void addJet(Scanner kb) {
+		Jet newJet = new JetImpl();
+		boolean endInput = false;
+		System.out.println("Please add the following characteristics of the Jet you wish to add: \n");
+		do {
+			System.out.print("Please select the type (1 = Fighter Jet), (2 = Cargo Jet) > ");
+			String input = kb.next();
+			switch (input) {
+			case "1":
+				System.out.println("Fighter Jet selected.\n");
+				newJet.setType("fighter");
+				endInput = true;
+				break;
+			case "2":
+				System.out.println("Cargo Jet selected.\n");
+				newJet.setType("cargo");
+				endInput = true;
+				break;
+			default:
+				System.out.println("Please select the correct type!");
+				break;
+			}
+		} while (!endInput);
+		try {
+			System.out.print("Please enter model: ");
+			newJet.setModel(kb.next());
+			System.out.print("Please enter range in miles: ");
+			newJet.setRange(kb.nextInt());
+			System.out.print("Please enter speed in miles per hour: ");
+			newJet.setSpeed(kb.nextDouble());
+			System.out.print("Please enter price in USD: ");
+			newJet.setPrice(kb.nextLong());
+		} catch (Exception e) {
+		}
+
+		jets.add(newJet);
+		System.out.println("\n Your Jet has been added to the fleet!");
+	}
 }

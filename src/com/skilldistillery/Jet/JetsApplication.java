@@ -57,7 +57,7 @@ public class JetsApplication {
 				dogFight();
 				break;
 			case "7":
-				// addJet();
+				addJet(kb);
 				break;
 			case "8":
 				// removeJet();
@@ -98,5 +98,9 @@ public class JetsApplication {
 
 	public void dogFight() {
 		jets.fight();
+	}
+	
+	public void addJet(Scanner kb) {
+		fleet.addJet(kb);
 	}
 }
